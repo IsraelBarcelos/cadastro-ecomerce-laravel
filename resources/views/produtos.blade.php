@@ -140,8 +140,8 @@
 		function montarLinha(objeto){ // monta a linha para cada elemento produto
 			
 			let linha = '<tr><td>'+objeto.id+'</td> <td onclick="detalhes('+objeto.id+')">'+objeto.produto+'<span id="badge'+objeto.id+'" class="ml-2 text-right badge badge-primary badge-pill">'+objeto.categorias.length+
-			'</span></td> <td>'+objeto.valor+'</td>'+
-			'<td>'+objeto.estoque+
+			'</span></td> <td>'+objeto.estoque+'</td>'+
+			'<td>'+objeto.valor+
 			'</td> <td class="text-center">'+
 			'<button onclick="editar('+objeto.id+')" class="mr-2 btn btn-warning">Editar</button>'+
 			'<button class="btn btn-danger mx-2 my-2" onclick="deletar('+objeto.id+')">Deletar</button> '+
@@ -337,7 +337,7 @@
 					let catsEmProd = {
 						idscategorias : $('#'+i+'')[0].value
 					}
-				
+
 					$.ajax({
 				    url: 'api/produtos/reestruturar/'+id,
 				    type: 'PUT',
