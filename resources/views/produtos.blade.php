@@ -1,6 +1,7 @@
 @extends('layout/app', ["current" => "produtos"])
 
 @section('body')
+	<div class="text-center">Clique no produto para ver categorias vinculadas</div> 
 	<div class="card border">
 		<div class="card-body">
 			<h5 class="card-title">Produtos</h5>
@@ -36,7 +37,7 @@
 	    	<div class="modal-content">
 	      		<div class="modal-header">
 	       			<h5 class="modal-title">Criar Produto</h5>
-	        		<button type="button" class="close" aria-label="Close">
+	        		<button type="cancel" class="close" aria-label="Close">
 	          			<span aria-hidden="true">&times;</span>
 	        		</button>
 	      		</div>
@@ -139,7 +140,7 @@
 
 		function montarLinha(objeto){ // monta a linha para cada elemento produto
 			
-			let linha = '<tr><td>'+objeto.id+'</td> <td onclick="detalhes('+objeto.id+')">'+objeto.produto+'<span id="badge'+objeto.id+'" class="ml-2 text-right badge badge-primary badge-pill">'+objeto.categorias.length+
+			let linha = '<tr><td>'+objeto.id+'</td> <td onclick="detalhes('+objeto.id+')" >'+objeto.produto+'<span id="clique" class="text-danger"></span><span id="badge'+objeto.id+'" class="ml-2 text-right badge badge-primary badge-pill">'+objeto.categorias.length+
 			'</span></td> <td>'+objeto.estoque+'</td>'+
 			'<td>'+objeto.valor+
 			'</td> <td class="text-center">'+
@@ -269,6 +270,7 @@
 
 			$('#show').modal('show')
 		}
+
 
 		function avancado(id){
 			$('#idAttach').val(id)

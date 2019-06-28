@@ -2,6 +2,7 @@
 
 @section('title') Categorias @endsection
 @section('body')
+	<div class="text-center">Clique na categoria para ver produtos vinculados</div> 
 	<div class="card border">
 		<div class="card-body">
 			<h5 class="card-title">Categorias</h5>
