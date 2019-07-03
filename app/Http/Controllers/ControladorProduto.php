@@ -17,7 +17,7 @@ class ControladorProduto extends Controller
         return response("Não há produtos : O servidor deve estar fora do ar.",404);
     }
 
- 
+
     public function store(Request $request)
     {
         $produto = new Produto();
@@ -74,29 +74,24 @@ class ControladorProduto extends Controller
         return response('Produto não encontrado',404);
     }
 
-    public function reestruturar($id, Request $request){
-        $prod = Produto::where('id',$id)->first();
-        $idcat = $request->input('idscategorias');
+    public function reestruturar(Request $request, $id){
+        $prod = Produto::where('id',$id)->with('categorias')->first(); //recebe o produto
 
+        
+        if(isset($prod)){ // se ele existir
 
-        if(isset($prod)){
-            $prod->categorias()->attach( $idcat ,['data_limite' => "29/10/2020"]);
+            $cats = $request->input('idscategorias');
+            foreach($cats as $c){
+                if($c == ""){
+                    unset($c);
+                }
+            }
+            $prod->categorias()->detach();
+            $prod->categorias()->attach($cats);
             $prod = Produto::where('id',$id)->with('categorias')->first();
             return json_encode($prod);
         }
         return response('Pagina foi descontinuada, atualizar para receber novas informações',404);        
     }
 
-    public function desestruturar($id, Request $request){
-        $prod = Produto::where('id',$id)->first();
-        $idcat = $request->input('idscategorias');
-
-        if(isset($prod)){
-            $prod->categorias()->detach($idcat);
-            $prod = Produto::where('id',$id)->with('categorias')->first();
-            return json_encode($prod);
-        }
-        return response('Pagina foi descontinuada, atualizar para receber novas informações',404); 
-        
-    }   
 }

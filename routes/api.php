@@ -14,9 +14,8 @@ Route::PUT('/produtos/{id}','ControladorProduto@update');
 
 Route::DELETE('/produtos/{id}','ControladorProduto@destroy');
 
-Route::PUT('/produtos/reestruturar/{id}','ControladorProduto@reestruturar');
+Route::get('/produtos/reestruturar/{id}','ControladorProduto@reestruturar');
 
-Route::PUT('/produtos/desestruturar/{id}','ControladorProduto@desestruturar');
 
 
 // REQUESTS CATEGORIA

@@ -33,7 +33,7 @@
 	      		<div class="modal-header">
 	       			<h5 class="modal-title">Criar Categoria</h5>
 	        		<button type="button" class="close" aria-label="Close">
-	          			<span aria-hidden="true">&times;</span>
+	          			<span data-dismiss="modal" aria-hidden="true">&times;</span>
 	        		</button>
 	      		</div>
 	      		<form id="addcat" class="form-group">
@@ -65,7 +65,7 @@
 	      		<div class="modal-header">
 	       			<h5 class="modal-title">Produtos da categoria</h5>
 	        		<button type="button" class="close" aria-label="Close">
-	          			<span aria-hidden="true">&times;</span>
+	          			<span data-dismiss="modal" aria-hidden="true">&times;</span>
 	        		</button>
 	      		</div>
 	      		
@@ -87,7 +87,7 @@
 	      		<div class="modal-header">
 	       			<h5 class="modal-title">Vincular categoria</h5>
 	        		<button type="button" class="close" aria-label="Close">
-	          			<span aria-hidden="true">&times;</span>
+	          			<span data-dismiss="modal" aria-hidden="true">&times;</span>
 	        		</button>
 	      		</div>
 	      		<form id="attachproduto" class="form-group">

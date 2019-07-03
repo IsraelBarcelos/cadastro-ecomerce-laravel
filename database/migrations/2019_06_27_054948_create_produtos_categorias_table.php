@@ -18,7 +18,7 @@ class CreateProdutosCategoriasTable extends Migration
             $table->foreign('produto_id')->references('id')->on('produtos');
             $table->integer('categoria_id')->unsigned();
             $table->foreign('categoria_id')->references('id')->on('categorias');
-            $table->string('data_limite');
+            $table->string('data_limite')->nullable();
             $table->timestamps();
             $table->primary(['produto_id','categoria_id']);
         });
