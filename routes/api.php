@@ -14,7 +14,7 @@ Route::PUT('/produtos/{id}','ControladorProduto@update');
 
 Route::DELETE('/produtos/{id}','ControladorProduto@destroy');
 
-Route::get('/produtos/reestruturar/{id}','ControladorProduto@reestruturar');
+Route::PUT('/produtos/reestruturar/{id}','ControladorProduto@reestruturar');
 
 
 
@@ -31,5 +31,3 @@ Route::PUT('/categorias/{id}','ControladorCategoria@update');
 Route::DELETE('/categorias/{id}','ControladorCategoria@destroy');
 
 Route::PUT('/categorias/reestruturar/{id}','ControladorCategoria@reestruturar');
-
-Route::PUT('/categorias/desestruturar/{id}','ControladorCategoria@desestruturar');

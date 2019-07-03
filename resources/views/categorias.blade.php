@@ -2,119 +2,119 @@
 
 @section('title') Categorias @endsection
 @section('body')
-	<div class="text-center">Clique na categoria para ver produtos vinculados</div> 
-	<div class="card border">
-		<div class="card-body">
-			<h5 class="card-title">Categorias</h5>
+<div class="text-center">Clique na categoria para ver produtos vinculados</div> 
+<div class="card border">
+	<div class="card-body">
+		<h5 class="card-title">Categorias</h5>
 
-			<table class="table table-ordered table-hover">
-				<thead>
-					<tr>
-						<th>Código</th>
-						<th>Nome da Categoria</th>
-						<th class="text-center">Ações</th>
-					</tr>
-				</thead>
-				<tbody id="tbody">
-			
-				</tbody>
-			</table>
+		<table class="table table-ordered table-hover">
+			<thead>
+				<tr>
+					<th>Código</th>
+					<th>Nome da Categoria</th>
+					<th class="text-center">Ações</th>
+				</tr>
+			</thead>
+			<tbody id="tbody">
 
+			</tbody>
+		</table>
+
+	</div>
+
+	<div class="card-footer text-center">
+		<button class="btn btn-primary" onclick="abrirFormulario()">Adicionar Categorias</button>
+	</div>
+</div>
+
+<div id="form" class="modal" tabindex="-1" role="dialog"><!-- Dialog criação de categorias -->
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Criar Categoria</h5>
+				<button type="button" class="close" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form id="addcat" class="form-group">
+				<div class="modal-body">
+
+					<input type="hidden" id="id">
+
+					<div>
+						<input id="categoria" class=" my-1 bg-dark text-white form-control" type="text" placeholder="Nome da categoria">
+					</div>
+
+
+
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-success">Salvar</button>
+					<button type="cancel" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+				</div>
+			</form>
 		</div>
+	</div> 
+</div>
 
-		<div class="card-footer text-center">
-			<button class="btn btn-primary" onclick="abrirFormulario()">Adicionar Categorias</button>
+
+
+<div id="show" class="modal" tabindex="-1" role="dialog"> <!-- Dialog Produtos de categorias -->
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Produtos da categoria</h5>
+				<button type="button" class="close" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+			<div id="modal-body" class="modal-body">
+
+
+			</div>
+			<div class="modal-footer">
+				<button type="cancel" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+			</div>
 		</div>
 	</div>
-
-	<div id="form" class="modal" tabindex="-1" role="dialog"><!-- Dialog criação de categorias -->
-	  	<div class="modal-dialog" role="document">
-	    	<div class="modal-content">
-	      		<div class="modal-header">
-	       			<h5 class="modal-title">Criar Categoria</h5>
-	        		<button type="button" class="close" aria-label="Close">
-	          			<span data-dismiss="modal" aria-hidden="true">&times;</span>
-	        		</button>
-	      		</div>
-	      		<form id="addcat" class="form-group">
-			      	<div class="modal-body">
-			        	
-			      		<input type="hidden" id="id">
-
-			        	<div>
-			        		<input id="categoria" class=" my-1 bg-dark text-white form-control" type="text" placeholder="Nome da categoria">
-			        	</div>
-
-			
-			        
-			      	</div>
-			      	<div class="modal-footer">
-			        	<button type="submit" class="btn btn-success">Salvar</button>
-			        	<button type="cancel" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-			      	</div>
-	      		</form>
-	    	</div>
-	  	</div> 
-	</div>
+</div>
 
 
+<div id="attach" class="modal" tabindex="-1" role="dialog"><!-- Dialog Attach de produtos -->
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Vincular categoria</h5>
+				<button type="button" class="close" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form id="attachproduto" class="form-group">
+				<div class="modal-body">
 
-	<div id="show" class="modal" tabindex="-1" role="dialog"> <!-- Dialog Produtos de categorias -->
-	  	<div class="modal-dialog" role="document">
-	    	<div class="modal-content">
-	      		<div class="modal-header">
-	       			<h5 class="modal-title">Produtos da categoria</h5>
-	        		<button type="button" class="close" aria-label="Close">
-	          			<span data-dismiss="modal" aria-hidden="true">&times;</span>
-	        		</button>
-	      		</div>
-	      		
-			      	<div id="modal-body" class="modal-body">
-			
-			        
-			      	</div>
-			      	<div class="modal-footer">
-			        	<button type="cancel" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-			      	</div>
-	    	</div>
-	  	</div>
-	</div>
+					<input type="hidden" id="idAttach">
 
+					<label class="text-center" id="categoriaUtilizada" ></label>
+					<div class="form-check ml-4" id="check">
 
-	<div id="attach" class="modal" tabindex="-1" role="dialog"><!-- Dialog Attach de produtos -->
-	  	<div class="modal-dialog" role="document">
-	    	<div class="modal-content">
-	      		<div class="modal-header">
-	       			<h5 class="modal-title">Vincular categoria</h5>
-	        		<button type="button" class="close" aria-label="Close">
-	          			<span data-dismiss="modal" aria-hidden="true">&times;</span>
-	        		</button>
-	      		</div>
-	      		<form id="attachproduto" class="form-group">
-			      	<div class="modal-body">
+					</div>
 
-			      		<input type="hidden" id="idAttach">
-
-			        	<label class="text-center" id="categoriaUtilizada" ></label>
-						<div class="form-check ml-4" id="check">
-
-						</div>
-			        
-			      	</div>
-			      	<div class="modal-footer">
-			        	<button type="submit" class="btn btn-success">Salvar</button>
-			        	<button type="cancel" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-			      	</div>
-	      		</form>
-	    	</div>
-	  	</div> 
-	</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-success">Salvar</button>
+					<button type="cancel" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+				</div>
+			</form>
+		</div>
+	</div> 
+</div>
 
 @endsection
 
 @section('javascript')
-	<script type="text/javascript">
-		let count_produtos = 0
+<script type="text/javascript">
+	let count_produtos = 0
 		$(function(){ //carrega a tabela ao final do programa
 			carregarCategorias()			
 		})
@@ -122,12 +122,12 @@
 		function carregarCategorias(){ 
 			$.get('api/categorias',function(dados){
 				dados = JSON.parse(dados);
-				console.log(dados)
+				
 				for(let i=0;i<dados.length;i++){
 					montarLinha(dados[i])
 				}
-			}
-		)}
+			})
+		}
 
 		function montarLinha(objeto){ // monta a linha para cada elemento categoria
 
@@ -183,31 +183,31 @@
 			}
 
 			$.ajax({
-			    url: '/api/categorias/'+id,
-			    type: 'PUT',
-			    data: categoria,
-			    success: function(data) {
-			    	data = JSON.parse(data)
-			    	for(let i=0;i<$('#tbody>tr').length;i++){
-			    		if($('#tbody>tr')[i].cells[0].innerText == data.id){
-			    			$('#tbody>tr')[i].cells[1].innerHTML = data.categoria+ '<span id="badge'+data.id+'" class="ml-2 text-right badge badge-primary badge-pill">'+data.produtos.length+'</span>'
-			    		}
-			    	}       
-			    }
+				url: '/api/categorias/'+id,
+				type: 'PUT',
+				data: categoria,
+				success: function(data) {
+					data = JSON.parse(data)
+					for(let i=0;i<$('#tbody>tr').length;i++){
+						if($('#tbody>tr')[i].cells[0].innerText == data.id){
+							$('#tbody>tr')[i].cells[1].innerHTML = data.categoria+ '<span id="badge'+data.id+'" class="ml-2 text-right badge badge-primary badge-pill">'+data.produtos.length+'</span>'
+						}
+					}       
+				}
 			})
 		}
 
 		function deletar(id){
 			$.ajax({
-			    url: '/api/categorias/'+id,
-			    type: 'DELETE',
-			    success: function(data) {
-			   		for(let i=0;i<$('#tbody>tr').length;i++){
-			    		if($('#tbody>tr')[i].cells[0].innerText == id){
-			    			$('#tbody>tr')[i].remove()
-			    		}
-			    	}
-			    }
+				url: '/api/categorias/'+id,
+				type: 'DELETE',
+				success: function(data) {
+					for(let i=0;i<$('#tbody>tr').length;i++){
+						if($('#tbody>tr')[i].cells[0].innerText == id){
+							$('#tbody>tr')[i].remove()
+						}
+					}
+				}
 			})
 		}
 
@@ -215,9 +215,9 @@
 		function detalhes(id){ //recupera detalhes de um unico item e mostra para o usuario
 			
 			var elemento = document.getElementById('modal-body') //limpa o modal body
-				while (elemento.firstChild) {
-					elemento.removeChild(elemento.firstChild);
-				}
+			while (elemento.firstChild) {
+				elemento.removeChild(elemento.firstChild);
+			}
 
 			$.get('/api/categorias/editar/'+id, function(dados){
 
@@ -248,8 +248,8 @@
 					linha = '<label>Não há produtos vinculados à categoria</label>'
 					$('#modal-body').append(linha)
 				}
-					
-				})
+
+			})
 
 			$('#show').modal('show')
 		}
@@ -257,9 +257,9 @@
 		function avancado(id){
 			$('#idAttach').val(id)
 			var elemento = document.getElementById('check') //limpa a div checkbox
-				while (elemento.firstChild) {
-					elemento.removeChild(elemento.firstChild);
-				}
+			while (elemento.firstChild) {
+				elemento.removeChild(elemento.firstChild);
+			}
 
 			$.get('/api/categorias/editar/'+id, function(dados){ //recebe a categoria sendo utilizada
 				
@@ -285,22 +285,22 @@
 						if(limite == dados.produtos.length){ //cria no caso negativo a box sem check
 
 							let linhas = 
-								'<input type="checkbox" value="'+dadosTodosProdutos[i].id+'" class="form-check-input" id="'+i+'">'+
-								'<label class="form-check-label" for="'+dadosTodosProdutos[i].produto+'">'+dadosTodosProdutos[i].produto+'</label><br>'
+							'<input type="checkbox" value="'+dadosTodosProdutos[i].id+'" class="form-check-input" id="'+i+'">'+
+							'<label class="form-check-label" for="'+dadosTodosProdutos[i].produto+'">'+dadosTodosProdutos[i].produto+'</label><br>'
 
-								$('#check').append(linhas)
+							$('#check').append(linhas)
 						}else{
 							let linhas = 
-								'<input type="checkbox" value="'+dadosTodosProdutos[i].id+'" checked class="form-check-input" id="'+i+'">'+
-								'<label class="form-check-label" for="'+dadosTodosProdutos[i].produto+'">'+dadosTodosProdutos[i].produto+'</label><br>'
+							'<input type="checkbox" value="'+dadosTodosProdutos[i].id+'" checked class="form-check-input" id="'+i+'">'+
+							'<label class="form-check-label" for="'+dadosTodosProdutos[i].produto+'">'+dadosTodosProdutos[i].produto+'</label><br>'
 
-								$('#check').append(linhas)
+							$('#check').append(linhas)
 						}
 					}
 
 
-				$('#attach').modal('show')
-			})
+					$('#attach').modal('show')
+				})
 
 			})
 		}
@@ -313,52 +313,40 @@
 
 		function reestruturaCategoria(id){
 			
-			
-			for(i=0;i<count_produtos;i++){
-				if($('#'+i+'')[0].checked == true){
 
-					let prodsEmCats = {
-						idsprodutos : $('#'+i+'')[0].value
-					}
+			opcaoUsuario = []
 
-					$.ajax({
-				    url: 'api/categorias/reestruturar/'+id,
-				    type: 'PUT',
-				    data: prodsEmCats,
-				    success: function(data) {
-				    	data = JSON.parse(data)
-				    	$('#badge'+data.id+'')[0].innerText = data.produtos.length
-					    		     
-					    },
-					    error: 'ERRO'
-					})
+			for(let i=0;i<count_produtos;i++){ //para cada categoria
+				if($('#'+i)[0].checked == true){ //se estiver marcada
 					
-				}else{
-					let prodsEmCats = {
-						idsprodutos : $('#'+i+'')[0].value
-					}
-
-					$.ajax({
-				    url: 'api/categorias/desestruturar/'+id,
-				    type: 'PUT',
-				    data: prodsEmCats,
-				    success: function(data) {
-				    	data = JSON.parse(data)
-				    	$('#badge'+data.id+'')[0].innerText = data.produtos.length
-					    		     
-					    },
-					    error: 'ERRO'
-					})
+					opcaoUsuario.push($('#'+i)[0].value)
 					
-
-					/**/	
 				}
 			}
+
+
+			$.ajax({
+				url: 'api/categorias/reestruturar/'+id,
+				type: 'PUT',
+				data: {idsprodutos:opcaoUsuario},
+				success: function(data) {
+					data = JSON.parse(data)
+					
+					$('#badge'+data.id+'')[0].innerText = data.produtos.length
+
+				},
+				error:
+				$.get('api/categorias/editar/'+id, function(data){
+					data = JSON.parse(data)
+					$('#badge'+data.id+'')[0].innerText = data.produtos.length
+				})
+			})
+			
 		}
 		
-				
+
 
 
 
 	</script>
-@endsection
+	@endsection

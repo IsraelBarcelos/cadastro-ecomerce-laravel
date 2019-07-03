@@ -356,25 +356,25 @@
 				}
 			}
 
-			console.log(opcaoUsuario)
+			
 
 
 			$.ajax({
 				url: 'api/produtos/reestruturar/'+id,
-				type: 'get',
+				type: 'PUT',
 				data: {idscategorias:opcaoUsuario},
 				success: function(data) {
 					data = JSON.parse(data)
-					console.log(data)
-				    	$('#badge'+data.id+'')[0].innerText = data.categorias.length
+					
+					$('#badge'+data.id+'')[0].innerText = data.categorias.length
 
-				    },
-				    error:
-				    $.get('api/produtos/editar/'+id, function(data){
-				    	data = JSON.parse(data)
-				    	$('#badge'+data.id+'')[0].innerText = data.categorias.length
-				    })
+				},
+				error:
+				$.get('api/produtos/editar/'+id, function(data){
+					data = JSON.parse(data)
+					$('#badge'+data.id+'')[0].innerText = data.categorias.length
 				})
+			})
 
 		}
 

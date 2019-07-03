@@ -68,27 +68,21 @@ class ControladorCategoria extends Controller
 
     public function reestruturar($id, Request $request){
         $cat = Categoria::where('id',$id)->first();
-        $idprod = $request->input('idsprodutos');
-
+        
         if(isset($cat)){
-            $cat->produtos()->attach( $idprod ,['data_limite' => "29/10/2020"]);
+            $prods = $request->input('idsprodutos');
+            foreach($prods as $p){
+                if($p == ""){
+                    unset($p);
+                }
+            }
+            $cat->produtos()->detach();
+            $cat->produtos()->attach($prods);
             $cat = Categoria::where('id',$id)->with('produtos')->first();
             return json_encode($cat);
+
         }
         return response('Pagina foi descontinuada, atualizar para receber novas informações',404);        
     }
-
-    public function desestruturar($id, Request $request){
-        $cat = Categoria::where('id',$id)->first();
-        $idprod = $request->input('idsprodutos');
-
-        if(isset($cat)){
-            $cat->produtos()->detach($idprod);
-            $cat = Categoria::where('id',$id)->with('produtos')->first();
-            return json_encode($cat);
-        }
-        return response('Pagina foi descontinuada, atualizar para receber novas informações',404); 
-        
-    }   
 }
 
